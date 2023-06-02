@@ -6,6 +6,9 @@
 
 .game-field {
   margin: 10px;
-  border: 5px solid #7b9171;
-  background: #bcceb5;
+  border: 5px solid #3a3a3a;
+  box-shadow: 5px 5px 40px 10px #3a3a3a;
+  background-image: url(../images/clever.svg);
+  background-size: 50px 50px;
+  background-color: #b8bba7;
 }

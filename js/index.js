@@ -16,6 +16,7 @@ const snake = {
 	yCoordinate: 0,
 	xWidth: 0,
 	yHeight: 0,
+	image: '../images/green-apple.svg'
 }
 
 const apple = {
@@ -56,16 +57,16 @@ document.addEventListener("keydown", function(e){
 function drawСells(){
 	// context.beginPath();
 	// context.fillStyle = '#909c8b';
-	context.strokeStyle = '#909c8b';
-	for (let x = 0; x<500; x = x + 50) {
-		// context.fillRect(x, 0, 50, 50);
-		context.strokeRect(x, 0, 50, 50);
-		for(let y = 0; y < 500;){
-		// context.fillRect(x, y, 50, 50);
-		context.strokeRect(x, y, 50, 50);
-		y = y + 50
-		}
-	}
+	// context.strokeStyle = '#909c8b';
+	// for (let x = 0; x<500; x = x + 50) {
+	// 	// context.fillRect(x, 0, 50, 50);
+	// 	context.strokeRect(x, 0, 50, 50);
+	// 	for(let y = 0; y < 500;){
+	// 	// context.fillRect(x, y, 50, 50);
+	// 	context.strokeRect(x, y, 50, 50);
+	// 	y = y + 50
+	// 	}
+	// }
 	// context.closePath();
 }
 
@@ -93,13 +94,32 @@ function drawSnake(){
 	}
 //* snake tail
 	snake.tail.forEach(function(elem, index) {
-		//tail of snake
+		// tail of snake
 		if (index == 0) {
-			context.fillStyle = 'rgb(109, 158, 86)'
+			context.fillStyle = '#f1e42c'
+			context.fillRect(elem.xCoordinate, elem.yCoordinate, fieldData.cell, fieldData.cell)
+			context.strokeStyle = '#40490b'
+			context.lineWidth = 5
+			context.strokeRect(elem.xCoordinate+15, elem.yCoordinate+15, 20, 20);
+			context.strokeRect(elem.xCoordinate, elem.yCoordinate, 50, 50);
 		} else {
-			context.fillStyle = 'rgb(125, 161, 108)'
+			context.fillStyle = '#f1e42c'
+			context.fillRect(elem.xCoordinate, elem.yCoordinate, fieldData.cell, fieldData.cell)
+			context.strokeStyle = '#40490b'
+			context.fillStyle = '#40490b'
+
+			context.fillRect(elem.xCoordinate+20, elem.yCoordinate+20, 10, 10);
+			context.lineWidth = 5
+			context.strokeRect(elem.xCoordinate+15, elem.yCoordinate+15, 20, 20);
+			context.strokeRect(elem.xCoordinate+7.5, elem.yCoordinate+7.5, 35, 35);
+			// context.lineWidth = 10
+			// context.lineWidth = 10
+			// context.strokeRect(elem.xCoordinate+5, elem.yCoordinate+5, 40, 40);
+			context.lineWidth = 5
+			context.strokeRect(elem.xCoordinate, elem.yCoordinate, 50, 50);
 		}
-		context.fillRect(elem.xCoordinate, elem.yCoordinate, fieldData.cell, fieldData.cell)
+
+
 
 		//увеличение змейки и появление нового яблока
 		if (elem.xCoordinate === apple.xCoordinate && elem.yCoordinate === apple.yCoordinate){
@@ -141,11 +161,19 @@ function borderCanvas(){
 }
 
 function drawApple(){
-	context.fillStyle = '#405735'
-	context.fillRect(apple.xCoordinate, apple.yCoordinate, fieldData.cell, fieldData.cell)
+	const image = new Image();   // Размер изображения
+	image.src = '../images/yellow-apple.svg';
+	context.drawImage(image, apple.xCoordinate, apple.yCoordinate, fieldData.cell, fieldData.cell)
+	//! загружается каждый раз и магает
+	// const render = () => {
+	// 	context.drawImage(image, apple.xCoordinate, apple.yCoordinate, fieldData.cell, fieldData.cell)
+	// }
+	// image.onload = render;
 }
 function newApple(){
 	snake.tail.forEach((elem) => {
+
+		//!не подходит - яблоко на долю секунды появляется на змейке
 		do{
 			apple.xCoordinate = getRandomNumber(0, 10) * fieldData.cell
 			apple.yCoordinate = getRandomNumber(0, 10) * fieldData.cell
