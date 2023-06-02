@@ -70,8 +70,6 @@ function drawСells(){
 	// context.closePath();
 }
 
-
-
 function getScore (){
 	score++;
 	currentScore.innerHTML = score
