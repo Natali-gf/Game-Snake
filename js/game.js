@@ -4,28 +4,28 @@ import Score from "./score.js";
 import Snake from "./snake.js";
 import GameField from "./gameField.js";
 import FieldData from "./fieldData.js";
-import { getRandomPosition } from "./helpers.js";
+// import { getRandomPosition } from "./helpers.js";
 
-const canvasContainer = document.getElementById('canvasContainer')
-const currentScore = document.getElementById('score')
-const bestScore = document.getElementById('bestResult')
-const canvasClassName = 'game-field';
-
-class Game {
-	constructor(container, canvasClassName, currentScore, bestScore){
-		this.canvas = new Canvas(container, canvasClassName);
+export default class Game {
+	constructor(canvasContainer, canvasClassName, canvasWidth, canvasHeight, currentScore, bestResult){
+		console.log(bestResult);
+		this.canvas = new Canvas(canvasContainer, canvasClassName, canvasWidth, canvasHeight);
 		this.apple = new Apple(this.canvas);
 		this.snake = new Snake();
-		this.score = new Score(currentScore, bestScore);
+		this.score = new Score(currentScore, bestResult);
 		this.field = new FieldData()
 		new GameField( this.update.bind(this), this.draw.bind(this) )
 	}
 
 	update(){
-		this.snake.rules(this.apple, this.score, this.canvas, this.field)
+		this.snake.rules(this.apple, this.score, this.canvas, this.field, this.resetGame.bind(this))
 	}
 
 	resetGame(){
+		if (this.score.currentScore > this.score.bestResult) {
+
+		}
+		console.log(333);
 		score = 0
 		snake.tail = []
 		snake.maxTailLength = 2
@@ -43,5 +43,3 @@ class Game {
 		this.snake.draw(this.canvas.context)
 	}
 }
-
-new Game(canvasContainer, canvasClassName, currentScore, bestScore)

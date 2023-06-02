@@ -1,19 +1,22 @@
 export default class Score {
-	constructor(currentScore, bestScore){
+	constructor(currentScore, bestResult){
 		this.score = 0;
 		this.bestScore = 0;
+		this.currentScore = currentScore;
+		this.bestResult = bestResult;
 		currentScore.append(this.score);
-		bestScore.append(this.bestScore);
+		bestResult.append(this.bestScore);
 		this.draw();
 		this.drawBestScore()
+		console.log(bestResult);
 	}
 
 	draw(){
-		// currentScore.innerHTML = this.score;
+		this.currentScore.innerHTML = this.score;
 	}
 
 	drawBestScore(){
-		// bestScore.innerHTML = this.bestScore;
+		this.bestResult.innerHTML = this.bestScore;
 	}
 
 	incScore(){
@@ -27,7 +30,7 @@ export default class Score {
 	}
 
 	changeBestScore(){
-		this.bestScore = this.score;
+		this.bestResult = this.score;
 		this.drawBestScore();
 	}
 }

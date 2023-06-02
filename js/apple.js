@@ -1,4 +1,3 @@
-import Canvas from "./canvas.js";
 import { getRandomNumber, getRandomPosition } from "./helpers.js";
 
 export default class Apple{
@@ -13,18 +12,29 @@ export default class Apple{
 		//todo
 		const image = new Image();
 		image.src = '../images/yellow-apple.svg';
-		// context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
+		context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
 
-		const render = () => {
-			context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
-		}
-		image.onload = render;
-
+		// const render = () => {
+		// 	context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
+		// }
+		// image.onload = render;
 	}
 
-	newApple(){
+	newApple(tail){
 		//todo
-		this.xCoordinate = getRandomNumber(0, 10) * 50
-		this.yCoordinate = getRandomNumber(0, 10) * 50
+		console.log(tail);
+
+		do{
+			this.xCoordinate = getRandomNumber(0, 10) * 50
+			this.yCoordinate = getRandomNumber(0, 10) * 50
+		} while (this.xCoordinate == tail && this.yCoordinate == tail){
+			this.xCoordinate = getRandomNumber(0, 10) * 50
+			this.yCoordinate = getRandomNumber(0, 10) * 50
+		}
+
+		// this.xCoordinate = getRandomNumber(0, 10) * 50
+		// this.yCoordinate = getRandomNumber(0, 10) * 50
+
+		// console.log(tail);
 	}
 }

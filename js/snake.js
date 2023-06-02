@@ -14,26 +14,26 @@ export default class Snake {
 		];
 	}
 
-	rules(apple, score, canvas, field){
+	rules(apple, score, canvas, field, resetGame){
+		console.log(this.tail[0]);
 		//movement of snake
 		this.xCoordinate += this.xWidth;
 		this.yCoordinate += this.yHeight;
-// console.log(canvas.canvas.width);
+		//movement across the border of the canvas
 		if (this.xCoordinate < 0){
-			this.xCoordinate = canvas.canvas.width
-		} else if (this.xCoordinate >= canvas.canvas.width - 50){
-			this.xCoordinate = -50
+			this.xCoordinate = canvas.canvas.width - 50
+		} else if (this.xCoordinate >= canvas.canvas.width){
+			this.xCoordinate = 0
 		}
 		if (this.yCoordinate < 0 ){
 			this.yCoordinate = canvas.canvas.height - 50
 		} else if (this.yCoordinate >= canvas.canvas.height ){
 			this.yCoordinate = 0
 		}
-
 		//control of tail length
 		this.tail.unshift({
-			'xCoordinate': this.xCoordinate,
-			'yCoordinate': this.yCoordinate
+			xCoordinate: this.xCoordinate,
+			yCoordinate: this.yCoordinate
 		})
 		if (this.tail.length > this.maxTailLength) {
 			this.tail.pop();
@@ -42,24 +42,17 @@ export default class Snake {
 		if (this.xCoordinate === apple.xCoordinate && this.yCoordinate === apple.yCoordinate){
 			this.maxTailLength++;
 			score.incScore()
-			apple.newApple()
+			apple.newApple(this.tail)
 		}
-		// console.log(this.tail);
-		// this.tail.forEach(function(elem, index) {
-		// 	for (let i = index + 1; i < this.tail.length; i++){
-		// 		if (elem.xCoordinate === this.tail[i].xCoordinate &&
-		// 			elem.yCoordinate === this.tail[i].yCoordinate){
-		// 			resetGame()
-		// 		}
-		// 	}
-		// })
-		// function borderCanvas(){
-			// console.log(field.sizeCell);
-
-		// }
-// console.log(this.xCoordinate);
-console.log(this.xCoordinate);
-
+		// checking tail's and apple's coordinates
+		this.tail.forEach((elem, index) => {
+			for (let i = index + 1; i < this.tail.length; i++){
+				if (elem.xCoordinate === this.tail[i].xCoordinate &&
+					elem.yCoordinate === this.tail[i].yCoordinate){
+					resetGame()
+				}
+			}
+		})
 	}
 
 	resetGame(){
@@ -110,6 +103,5 @@ console.log(this.xCoordinate);
 			}
 		})
 		this.control()
-		// console.log(field.sizeCell);
 	}
 }
