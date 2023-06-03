@@ -1,7 +1,6 @@
 import Game from "./game.js";
 import Canvas from "./canvas.js";
 
-
 const canvasContainer = document.getElementById('canvasContainer')
 const currentScore = document.getElementById('score')
 const bestResult = document.getElementById('bestResult')
@@ -12,8 +11,4 @@ const canvasWidth = 500;
 const canvasHeight = 500;
 
 const canvas = new Canvas(canvasContainer, canvasClassName, canvasWidth, canvasHeight);
-// canvas.create()
-new Game(
-	canvas,
-	// canvasContainer, canvasClassName, canvasWidth, canvasHeight,
-	currentScore, bestResult, startField, buttonRestart)
+new Game(canvas, currentScore, bestResult, startField, buttonRestart)

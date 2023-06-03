@@ -2,11 +2,11 @@ export default class GameCycle {
 	constructor(update, draw, startField){
 		this.update = update;
 		this.draw = draw;
-		this.movement = this.movement.bind(this);
-		// this.movement();
-		this.start();
+		this.movement = this.#movement.bind(this);
 		this.startField = startField
 		this.setIntervalId;
+
+		this.start();
 	}
 	start(){
 		document.addEventListener("click", (e) => {
@@ -21,7 +21,7 @@ export default class GameCycle {
 		clearInterval(this.setIntervalId)
 	}
 
-	movement() {
+	#movement() {
 		this.update();
 		this.draw();
 	}

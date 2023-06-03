@@ -1,19 +1,18 @@
+import Unicellular from "./Unicellular.js";
 import { getRandomNumber } from "./helpers.js";
 
 export default class Apple{
-	constructor(snakeTail, cizeCell){
+	constructor(snakeTail){
 		this.snakeTail = snakeTail;
-		this._cizeCell = cizeCell
+		this.field = new Unicellular();
 		this.newApple()
-
-		console.log(this._cizeCell =20);
 	}
 
 	draw(context){
 		//todo
 		const image = new Image();
 		image.src = '../images/yellow-apple.svg';
-		context.drawImage(image, this.xCoordinate, this.yCoordinate, this._cizeCell, this._cizeCell)
+		context.drawImage(image, this.xCoordinate, this.yCoordinate, this.field._sizeCell, this.field._sizeCell)
 
 		// const render = () => {
 		// 	context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
@@ -22,21 +21,15 @@ export default class Apple{
 	}
 
 	newApple(){
-		//todo
-		// this._cizeCell = 20
-		this.xCoordinate = getRandomNumber(0, 10) * this._cizeCell
-		this.yCoordinate = getRandomNumber(0, 10) * this._cizeCell
-console.log(this._cizeCell);
-console.log(this.yCoordinate);
+		this.xCoordinate = getRandomNumber(0, 10) * this.field._sizeCell
+		this.yCoordinate = getRandomNumber(0, 10) * this.field._sizeCell
+
 		this.snakeTail.forEach((elem) => {
 			if(this.xCoordinate == elem.xCoordinate &&
 				this.yCoordinate == elem.yCoordinate){
-					this.xCoordinate = getRandomNumber(0, 10) * this._cizeCell
-					this.yCoordinate = getRandomNumber(0, 10) * this._cizeCell
+					this.xCoordinate = getRandomNumber(0, 10) * this.field._sizeCell
+					this.yCoordinate = getRandomNumber(0, 10) * this.field._sizeCell
 			}
 		})
-	}
-	get cizeCell(){
-		return this._sizeCell;
 	}
 }

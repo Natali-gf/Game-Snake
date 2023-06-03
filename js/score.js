@@ -1,50 +1,70 @@
 export default class Score {
+
+	_score = 0;
+	_bestScore;
+	_localBestScore = localStorage.getItem('bestScore');
+
 	constructor(currentScore, bestResult){
-		this.score = 0;
-		this.bestScore;
-		this.localBestScore = localStorage.getItem('bestScore');
+		// this.score = 0;
+		// this.bestScore;
+		// this.localBestScore = localStorage.getItem('bestScore');
 
 		this.currentScore = currentScore;
 		this.bestResult = bestResult;
-		currentScore.append(this.score);
-		bestResult.append(this.bestScore);
 
+		this.#create()
 		this.drawScore();
-		this.checkLocalStorage()
+		this.#checkLocalStorage()
 	}
 
-	checkLocalStorage(){
-		if(this.localBestScore){
-			this.bestScore = this.localBestScore
+	#create(){
+		this.currentScore.append(this._score);
+		this.bestResult.append(this._bestScore);
+	}
+
+
+	#checkLocalStorage(){
+		if(this._localBestScore){
+			this._bestScore = this._localBestScore
 		}
 		this.drawBestScore()
 	}
 
 	drawScore(){
-		this.currentScore.innerHTML = this.score;
+		this.currentScore.innerHTML = this._score;
 	}
 
 	drawBestScore(){
-		if (this.bestScore){
-			this.bestResult.innerHTML = this.bestScore;
+		if (this._bestScore){
+			this.bestResult.innerHTML = this._bestScore;
 		} else {
 			this.bestResult.innerHTML = '-';
 		}
 	}
 
 	incScore(){
-		this.score++;
+		this._score++;
 		this.drawScore();
 	}
 
 	changeBestScore(){
-		this.bestScore = this.score;
-		localStorage.setItem('bestScore', this.score.toString())
+		this._bestScore = this._score;
+		localStorage.setItem('bestScore', this._score.toString())
 		this.drawBestScore();
 	}
 
 	resetScore(){
-		this.score = 0;
+		this._score = 0;
 		this.drawScore();
+	}
+
+	get score(){
+		return this._score
+	}
+	get bestScore(){
+		return this._bestScore
+	}
+	get localBestScore(){
+		return this._localBestScore
 	}
 }
