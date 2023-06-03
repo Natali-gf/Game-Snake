@@ -1,0 +1,44 @@
+.canvas
+	position: relative
+	&__button
+		position: absolute
+		display: none
+		justify-content: center
+		align-items: center
+		width: fit-content
+		height: fit-content
+		background: rgb(37, 37, 31)
+		border: 2px solid #f1e74f
+		color: #d3cf94
+		font-size: 35px
+		z-index: 2
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		margin: auto
+		padding: 20px 50px
+
+	&__description
+		position: absolute
+		width: 100%
+		height: 100%
+		background: rgba(44, 43, 35, 0.904)
+		display: flex
+		justify-content: center
+		align-items: center
+		color: #c0c0ad
+		font-size: 25px
+		z-index: 1
+
+	&__field
+		border: 5px solid $background
+		box-shadow: 5px 5px 40px 20px $background
+		background-image: url(../images/clever.svg)
+		background-size: $sizeCell $sizeCell
+		background-color: #b8bba7
+
+	// background-size: 50px / 50px
+	// background: #f1e42c
+	// background: #5c5b2b
+	// background: #9b9b87

@@ -1,21 +1,21 @@
-import FieldData from "./fieldData.js";
+import Unicellular from "./Unicellular.js";
 
 export default class Snake {
 	constructor(){
-		this.field = new FieldData()
-		this.xCoordinate = 0;
-		this.yCoordinate = 0;
-		this.xWidth = 50;
-		this.yHeight = 0;
-		this.maxTailLength = 2;
-		this.tail = [
-			// {xCoordinate: 0, yCoordinate: 0},
-			// {xCoordinate: 50, yCoordinate: 0}
-		];
+		this.field = new Unicellular()
+		// this.xCoordinate = 200;
+		// this.yCoordinate = 200;
+		// this.xWidth = 50;
+		// this.yHeight = 0;
+		// this.maxTailLength = 2;
+		// this.tail = [
+		// 	{xCoordinate: 200, yCoordinate: 200},
+		// 	{xCoordinate: 150, yCoordinate: 200}
+		// ];
+		this.startValues()
 	}
 
 	rules(apple, score, canvas, field, resetGame){
-		console.log(this.tail[0]);
 		//movement of snake
 		this.xCoordinate += this.xWidth;
 		this.yCoordinate += this.yHeight;
@@ -55,8 +55,16 @@ export default class Snake {
 		})
 	}
 
-	resetGame(){
-
+	startValues(){
+		this.xCoordinate = 200;
+		this.yCoordinate = 200;
+		this.xWidth = 50;
+		this.yHeight = 0;
+		this.maxTailLength = 2;
+		this.tail = [
+			{xCoordinate: 200, yCoordinate: 200},
+			{xCoordinate: 150, yCoordinate: 200}
+		];
 	}
 
 	//snake movement control

@@ -1,36 +1,50 @@
 export default class Score {
 	constructor(currentScore, bestResult){
 		this.score = 0;
-		this.bestScore = 0;
+		this.bestScore;
+		this.localBestScore = localStorage.getItem('bestScore');
+
 		this.currentScore = currentScore;
 		this.bestResult = bestResult;
 		currentScore.append(this.score);
 		bestResult.append(this.bestScore);
-		this.draw();
-		this.drawBestScore()
-		console.log(bestResult);
+
+		this.drawScore();
+		this.checkLocalStorage()
 	}
 
-	draw(){
+	checkLocalStorage(){
+		if(this.localBestScore){
+			this.bestScore = this.localBestScore
+		}
+		this.drawBestScore()
+	}
+
+	drawScore(){
 		this.currentScore.innerHTML = this.score;
 	}
 
 	drawBestScore(){
-		this.bestResult.innerHTML = this.bestScore;
+		if (this.bestScore){
+			this.bestResult.innerHTML = this.bestScore;
+		} else {
+			this.bestResult.innerHTML = '-';
+		}
 	}
 
 	incScore(){
 		this.score++;
-		this.draw();
+		this.drawScore();
+	}
+
+	changeBestScore(){
+		this.bestScore = this.score;
+		localStorage.setItem('bestScore', this.score.toString())
+		this.drawBestScore();
 	}
 
 	resetScore(){
 		this.score = 0;
-		this.draw();
-	}
-
-	changeBestScore(){
-		this.bestResult = this.score;
-		this.drawBestScore();
+		this.drawScore();
 	}
 }

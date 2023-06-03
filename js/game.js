@@ -2,19 +2,19 @@ import Apple from "./apple.js";
 import Canvas from "./canvas.js";
 import Score from "./score.js";
 import Snake from "./snake.js";
-import GameField from "./gameField.js";
-import FieldData from "./fieldData.js";
-// import { getRandomPosition } from "./helpers.js";
+import GameCycle from "./gameCycle.js";
+import Unicellular from "./Unicellular.js";
 
 export default class Game {
-	constructor(canvasContainer, canvasClassName, canvasWidth, canvasHeight, currentScore, bestResult){
-		console.log(bestResult);
+	constructor(canvasContainer, canvasClassName, canvasWidth, canvasHeight, currentScore, bestResult, startField, buttonRestart){
 		this.canvas = new Canvas(canvasContainer, canvasClassName, canvasWidth, canvasHeight);
-		this.apple = new Apple(this.canvas);
 		this.snake = new Snake();
+		this.apple = new Apple(this.canvas, this.snake.tail);
+
 		this.score = new Score(currentScore, bestResult);
-		this.field = new FieldData()
-		new GameField( this.update.bind(this), this.draw.bind(this) )
+		this.field = new Unicellular()
+		this.buttonRestart = buttonRestart;
+		this.gameCycle = new GameCycle( this.update.bind(this), this.draw.bind(this), startField )
 	}
 
 	update(){
@@ -22,19 +22,28 @@ export default class Game {
 	}
 
 	resetGame(){
-		if (this.score.currentScore > this.score.bestResult) {
 
+		if (this.score.score > this.score.bestScore ||
+			!this.score.bestScore) {
+			this.score.changeBestScore()
 		}
+		this.buttonRestart.style.display = 'flex';
+		// this.snake.startValues()
+		this.gameCycle.stop()
+		this.restart()
 		console.log(333);
-		score = 0
-		snake.tail = []
-		snake.maxTailLength = 2
-		snake.xCoordinate = 0
-		snake.yCoordinate = 0
-		snake.xWidth = 0
-		snake.yHeight = 0
 	}
 
+	restart(){
+		this.buttonRestart.addEventListener("click", () => {
+			this.buttonRestart.style.display = 'none';
+			this.gameCycle.startField.style.display = 'flex'
+			this.snake.startValues()
+			this.apple.newApple()
+			this.draw()
+			this.score.resetScore()
+		})
+	}
 
 	draw() {
 		this.canvas.context.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height)

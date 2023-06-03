@@ -1,53 +1,14 @@
-*
-	border: 0
-	margin: 0
-	padding: 0
+@import '_reset.scss'
 
-.game
-	background: #4d4c48
-	width: 100vw
-	height: 100vh
-	&__container
-		width: fit-content
-		padding: 20px
+//* variables
+$colorMain: #f1e74f
+$colorLight: #d3cf94
+$background: #1f1f1c
+$backgroundLight: #b8bba7
+$sizeCell: 50px
 
 
+@import '_game.sass'
+@import '_score.sass'
+@import '_canvas.sass'
 
-	&__scores
-		// margin: 0 auto
-
-
-
-.score
-	display: flex
-	justify-content: space-between
-	.score__container
-		background: #1f1f1c
-		width: 200px
-		display: flex
-		flex-direction: column
-		align-items: center
-		padding: 10px
-		margin: 0 1px 20px
-		box-shadow: 2px 2px 30px 5px #1d1d1c
-	&__title
-		color: #d3cf94
-	&__current, &__best
-		color: #f1e74f
-		font-size: 30px
-
-
-
-.game-field
-	// margin: 10px
-	border: 5px solid #2b2b2b
-	box-shadow: 5px 5px 40px 20px #2e2d2d
-	// background: #47473f
-	background-image: url(../images/clever.svg)
-	background-size: 50px 50px
-	background-color: #b8bba7
-
-	// background-size: 50px / 50px
-	// background: #f1e42c
-	// background: #5c5b2b
-	// background: #9b9b87

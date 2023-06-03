@@ -1,7 +1,58 @@
-* {
-  border: 0;
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Don't kill focus outline for keyboard users: http://24ways.org/2009/dont-lose-your-focus */
+a:hover, a:active {
+  outline: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .game {
@@ -18,7 +69,7 @@
   display: flex;
   justify-content: space-between;
 }
-.score .score__container {
+.score__container {
   background: #1f1f1c;
   width: 200px;
   display: flex;
@@ -36,9 +87,45 @@
   font-size: 30px;
 }
 
-.game-field {
-  border: 5px solid #2b2b2b;
-  box-shadow: 5px 5px 40px 20px #2e2d2d;
+.canvas {
+  position: relative;
+}
+.canvas__button {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: rgb(37, 37, 31);
+  border: 2px solid #f1e74f;
+  color: #d3cf94;
+  font-size: 35px;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 20px 50px;
+}
+.canvas__description {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 43, 35, 0.904);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c0c0ad;
+  font-size: 25px;
+  z-index: 1;
+}
+.canvas__field {
+  border: 5px solid #1f1f1c;
+  box-shadow: 5px 5px 40px 20px #1f1f1c;
   background-image: url(../images/clever.svg);
   background-size: 50px 50px;
   background-color: #b8bba7;

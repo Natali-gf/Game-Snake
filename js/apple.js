@@ -1,14 +1,14 @@
 import { getRandomNumber, getRandomPosition } from "./helpers.js";
 
 export default class Apple{
-	constructor(canvas){
-		this.xCoordinate = 0;
-		this.yCoordinate = 0;
-		this.canvas = canvas;
+	constructor(canvas, snakeTail){
+		// this.canvas = canvas;
+		this.snakeTail = snakeTail;
 		this.newApple()
 	}
 
 	draw(context){
+		// this.newApple()
 		//todo
 		const image = new Image();
 		image.src = '../images/yellow-apple.svg';
@@ -20,21 +20,17 @@ export default class Apple{
 		// image.onload = render;
 	}
 
-	newApple(tail){
+	newApple(){
 		//todo
-		console.log(tail);
+		this.xCoordinate = getRandomNumber(0, 10) * 50
+		this.yCoordinate = getRandomNumber(0, 10) * 50
 
-		do{
-			this.xCoordinate = getRandomNumber(0, 10) * 50
-			this.yCoordinate = getRandomNumber(0, 10) * 50
-		} while (this.xCoordinate == tail && this.yCoordinate == tail){
-			this.xCoordinate = getRandomNumber(0, 10) * 50
-			this.yCoordinate = getRandomNumber(0, 10) * 50
-		}
-
-		// this.xCoordinate = getRandomNumber(0, 10) * 50
-		// this.yCoordinate = getRandomNumber(0, 10) * 50
-
-		// console.log(tail);
+		this.snakeTail.forEach((elem, index) => {
+			if(this.xCoordinate == elem.xCoordinate &&
+				this.yCoordinate == elem.yCoordinate){
+					this.xCoordinate = getRandomNumber(0, 10) * 50
+					this.yCoordinate = getRandomNumber(0, 10) * 50
+			}
+		})
 	}
 }
