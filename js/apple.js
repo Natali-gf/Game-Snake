@@ -1,18 +1,19 @@
-import { getRandomNumber, getRandomPosition } from "./helpers.js";
+import { getRandomNumber } from "./helpers.js";
 
 export default class Apple{
-	constructor(canvas, snakeTail){
-		// this.canvas = canvas;
+	constructor(snakeTail, cizeCell){
 		this.snakeTail = snakeTail;
+		this._cizeCell = cizeCell
 		this.newApple()
+
+		console.log(this._cizeCell =20);
 	}
 
 	draw(context){
-		// this.newApple()
 		//todo
 		const image = new Image();
 		image.src = '../images/yellow-apple.svg';
-		context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
+		context.drawImage(image, this.xCoordinate, this.yCoordinate, this._cizeCell, this._cizeCell)
 
 		// const render = () => {
 		// 	context.drawImage(image, this.xCoordinate, this.yCoordinate, 50, 50)
@@ -22,15 +23,20 @@ export default class Apple{
 
 	newApple(){
 		//todo
-		this.xCoordinate = getRandomNumber(0, 10) * 50
-		this.yCoordinate = getRandomNumber(0, 10) * 50
-
-		this.snakeTail.forEach((elem, index) => {
+		// this._cizeCell = 20
+		this.xCoordinate = getRandomNumber(0, 10) * this._cizeCell
+		this.yCoordinate = getRandomNumber(0, 10) * this._cizeCell
+console.log(this._cizeCell);
+console.log(this.yCoordinate);
+		this.snakeTail.forEach((elem) => {
 			if(this.xCoordinate == elem.xCoordinate &&
 				this.yCoordinate == elem.yCoordinate){
-					this.xCoordinate = getRandomNumber(0, 10) * 50
-					this.yCoordinate = getRandomNumber(0, 10) * 50
+					this.xCoordinate = getRandomNumber(0, 10) * this._cizeCell
+					this.yCoordinate = getRandomNumber(0, 10) * this._cizeCell
 			}
 		})
+	}
+	get cizeCell(){
+		return this._sizeCell;
 	}
 }
