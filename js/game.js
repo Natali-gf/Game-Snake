@@ -21,9 +21,6 @@ export default class Game {
 
 	update(){
 		this.snake.rules(this.apple, this.score, this.canvas, this.resetGame.bind(this))
-		// this.snake.deathSnake(this.resetGame.bind(this), this.canvas.context)
-		// this.snake.increaseSnake(this.apple, this.score,)
-
 	}
 
 	draw() {
@@ -62,7 +59,6 @@ export default class Game {
 			}
 		})
 		document.addEventListener("keydown", () => {
-			console.log(this.startField.style.display);
 			if(!this.startField.style.display ||
 				this.startField.style.display === 'flex'){
 				this.gameCycle.start()

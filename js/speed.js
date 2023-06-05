@@ -1,16 +1,17 @@
 export default class Speed {
-	constructor(){
-		this._speed = 200;
-	}
+	_speed = 200;
 
 	get speed(){
 		return this._speed;
 	}
 	set speed(speedUp){
-		if(speedUp % 50 === 0) {
+		if(speedUp % 20 === 0) {
 			this._speed = speedUp
+			if(this._speed<100){
+				this._speed = 100;
+			}
 		} else {
-			console.log('speed must be multiple of 50');
+			console.log('speed must be multiple of 10');
 		}
 	}
 }

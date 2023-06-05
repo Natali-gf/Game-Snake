@@ -26,7 +26,7 @@ export default class GameCycle {
 	}
 
 	accelerateCycle(){
-		speed.speed -= 50
+		speed.speed -= 20
 		this.stop();
 		this.start();
 	}
