@@ -119,8 +119,10 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: #c0c0ad;
   font-size: 25px;
+  line-height: 40px;
   z-index: 1;
 }
 .canvas__field {
@@ -129,4 +131,66 @@ table {
   background-image: url(../images/clever.svg);
   background-size: 50px 50px;
   background-color: #b8bba7;
+}
+
+.settings__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.settings__speed {
+  padding: 10px;
+}
+
+.speed {
+  display: flex;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.speed:hover {
+  border: 1px solid #1f1f1c;
+  background: #d3cf94;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px 0.3px #1f1f1c;
+}
+.speed::before {
+  content: "";
+  background: url(../images/speed.svg);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.speed__choice {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.speed__list {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.speed__item {
+  padding: 5px 0;
+}
+.speed__button {
+  max-width: 120px;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #d3cf94;
+  background: #1f1f1c;
+  border: 1px solid #d3cf94;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 0.3px #1f1f1c;
+  margin-top: 10px;
+  padding: 1.1px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
 }

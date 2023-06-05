@@ -21,47 +21,43 @@
 				</div>
 			</div>
 			<div id="canvasContainer" class="canvas game__canvas">
-				<button class="canvas__button">Restart?</button>
-				<p value="start" class="canvas__description">To start the game press any key or click here</p>
-
-				<!-- <canvas class="canvas__field" id="gameField" width="500" height="500"></canvas> -->
+				<button class="canvas__button">
+					Restart?
+				</button>
+				<p class="canvas__description">
+					Press any key or click on the field <br> to start the game
+				</p>
 			</div>
-			<!-- <div class="settings">
+			<div class="settings">
 				<div class="settings__container">
-					<div class="settings__field">
+					<!-- <div class="settings__field">
 						<input id="field1" type="radio" name="field">
 						<label for="field1">10 x 10</label>
 						<input id="field2" type="radio" name="field">
 						<label for="field2">15 x 15</label>
 						<input id="field3" type="radio" name="field">
 						<label for="field3">20 x 20</label>
-					</div>
-					<div class="settings__speed">
-						<div class="settings__field">
-							<input id="speed1" type="radio" name="speed">
-							<label for="speed1">Speed 1</label>
-							<input id="speed2" type="radio" name="speed">
-							<label for="speed2">Speed 2</label>
-							<input id="speed3" type="radio" name="speed">
-							<label for="speed3">Speed 3</label>
-							<input id="speed4" type="radio" name="speed">
-							<label for="speed4">Speed 4</label>
-							<input id="speed5" type="radio" name="speed">
-							<label for="speed5">Speed 5</label>
-							<input id="speed6" type="radio" name="speed">
-							<label for="speed6">Speed 6</label>
-							<input id="speed7" type="radio" name="speed">
-							<label for="speed7">Speed 7</label>
-							<input id="speed8" type="radio" name="speed">
-							<label for="speed8">Speed 8</label>
-							<input id="speed9" type="radio" name="speed">
-							<label for="speed9">Speed 9</label>
-							<input id="speed10" type="radio" name="speed">
-							<label for="speed10">Speed 10</label>
+					</div> -->
+					<div class="settings__speed speed">
+						<div class="speed__choice">
+							<ul class="speed__list">
+								<li class="settings__item">
+									<input id="speedConstant" type="radio" checked name="speed">
+									<label for="speedConstant">Don't speed up</label>
+								</li>
+								<li class="settings__item">
+									<input id="speedUp" type="radio" name="speed">
+									<label for="speedUp">Gradually accelerate</label>
+								</li>
+							</ul>
+							<button class="speed__button">
+								Restart the game with new settings
+							</button>
 						</div>
 					</div>
+
 				</div>
-			</div> -->
+			</div>
 		</div>
 	</div>
 

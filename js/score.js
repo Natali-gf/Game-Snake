@@ -5,10 +5,6 @@ export default class Score {
 	_localBestScore = localStorage.getItem('bestScore');
 
 	constructor(currentScore, bestResult){
-		// this.score = 0;
-		// this.bestScore;
-		// this.localBestScore = localStorage.getItem('bestScore');
-
 		this.currentScore = currentScore;
 		this.bestResult = bestResult;
 

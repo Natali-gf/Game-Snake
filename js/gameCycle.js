@@ -1,24 +1,34 @@
+import Speed from "./speed.js";
+
+//! Подскажите best practice инициализации обьекта:
+//! в конструкторе как я делала в других классах
+//! или до написания класа, как я сделала здесь?
+
+const speed = new Speed()
+
 export default class GameCycle {
-	constructor(update, draw, startField){
+	constructor(update, draw){
 		this.update = update;
 		this.draw = draw;
-		this.movement = this.#movement.bind(this);
-		this.startField = startField
-		this.setIntervalId;
 
-		this.start();
+		this.accelerateCycle = this.accelerateCycle.bind(this);
+		this.movement = this.#movement.bind(this);
+		this.setIntervalId;
 	}
+
 	start(){
-		document.addEventListener("click", (e) => {
-			if (e.target === this.startField) {
-				this.setIntervalId = setInterval(this.movement, 200);
-				this.startField.style.display = 'none'
-			}
-		})
+		console.log(speed.speed);
+		this.setIntervalId = setInterval(this.movement, speed.speed);
 	}
 
 	stop(){
 		clearInterval(this.setIntervalId)
+	}
+
+	accelerateCycle(){
+		speed.speed -= 50
+		this.stop();
+		this.start();
 	}
 
 	#movement() {
