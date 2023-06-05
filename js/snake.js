@@ -1,9 +1,8 @@
 import Unicellular from "./Unicellular.js";
 
 export default class Snake extends Unicellular {
-	constructor(accelerateCycle){
+	constructor(){
 		super()
-		this.accelerateCycle = accelerateCycle
 		this.startValues()
 	}
 

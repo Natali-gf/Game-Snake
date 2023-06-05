@@ -4,10 +4,11 @@ import Speed from "./speed.js";
 //! в конструкторе как я делала в других классах
 //! или до написания класа, как я сделала здесь?
 
-const speed = new Speed()
+// const speed = new Speed()
 
-export default class GameCycle {
+export default class GameCycle extends Speed {
 	constructor(update, draw){
+		super()
 		this.update = update;
 		this.draw = draw;
 
@@ -17,8 +18,8 @@ export default class GameCycle {
 	}
 
 	start(){
-		console.log(speed.speed);
-		this.setIntervalId = setInterval(this.movement, speed.speed);
+		console.log(this.speed);
+		this.setIntervalId = setInterval(this.movement, this.speed);
 	}
 
 	stop(){
@@ -26,7 +27,7 @@ export default class GameCycle {
 	}
 
 	accelerateCycle(){
-		speed.speed -= 20
+		this.speed -= 20
 		this.stop();
 		this.start();
 	}

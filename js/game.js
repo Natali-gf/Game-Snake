@@ -2,14 +2,19 @@ import Apple from "./apple.js";
 import Score from "./score.js";
 import Snake from "./snake.js";
 import GameCycle from "./gameCycle.js";
+import Speed from "./speed.js";
+
+//! Подскажите best practice инициализации обьекта:
+//! в конструкторе или до написания класа (как speed)?
+
+const speed = new Speed()
 
 export default class Game {
 	constructor(canvas, currentScore, bestResult, startField, buttonRestart, speedConstant){
 		this.buttonRestart = buttonRestart;
 		this.startField = startField
 		this.canvas = canvas;
-		this.speedConstant = speedConstant
-		this.speedControl
+		this.speedConstant = speedConstant;
 
 		this.snake = new Snake();
 		this.apple = new Apple(this.snake.tail);
@@ -26,7 +31,7 @@ export default class Game {
 	draw() {
 		this.canvas.context.clearRect(0, 0, this.canvas.canvasWidth, this.canvas.canvasHeight)
 		this.apple.draw(this.canvas.context)
-		this.snake.draw(this.canvas.context, this.canvas)
+		this.snake.draw(this.canvas.context)
 	}
 
 	resetGame(){
@@ -48,6 +53,7 @@ export default class Game {
 		this.apple.newApple()
 		this.draw()
 		this.score.resetScore()
+		speed.speed = 500;
 		})
 	}
 

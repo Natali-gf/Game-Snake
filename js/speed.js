@@ -1,5 +1,9 @@
 export default class Speed {
-	_speed = 200;
+	_speed = 500;
+
+	// initialSpeed(){
+	// 	this._speed = 500;
+	// }
 
 	get speed(){
 		return this._speed;
@@ -7,11 +11,11 @@ export default class Speed {
 	set speed(speedUp){
 		if(speedUp % 20 === 0) {
 			this._speed = speedUp
-			if(this._speed<100){
+			if(this._speed < 100){
 				this._speed = 100;
 			}
 		} else {
-			console.log('speed must be multiple of 10');
+			console.log('speed must be multiple of 20');
 		}
 	}
 }
