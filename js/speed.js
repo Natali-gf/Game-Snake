@@ -1,9 +1,12 @@
 export default class Speed {
-	_speed = 500;
+	constructor(){
+		this._speed = 500;
+		setInterval(this.speed, 500);
+	}
 
-	// initialSpeed(){
-	// 	this._speed = 500;
-	// }
+	initialSpeed(){
+		this._speed = 500;
+	}
 
 	get speed(){
 		return this._speed;

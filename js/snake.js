@@ -47,26 +47,18 @@ export default class Snake extends Unicellular {
 		document.addEventListener("keydown", (e) => {
 			if (	e.code === 'KeyW' && this.yHeight == 0 ||
 					e.code === 'ArrowUp' && this.yHeight == 0) {
-						// console.log(1);
-						// console.log(this.tail);
 				this.xWidth = 0;
 				this.yHeight = -this._sizeCell;
 			} else if(	e.code === 'KeyS' && this.yHeight == 0 ||
 						e.code == 'ArrowDown' && this.yHeight == 0) {
-							// console.log(2);
-							// console.log(this.tail);
 				this.xWidth = 0;
 				this.yHeight = +this._sizeCell;
 			} else if(	e.code === 'KeyA' && this.xWidth == 0 ||
 						e.code == 'ArrowLeft' && this.xWidth == 0) {
-							// console.log(3);
-							// console.log(this.tail);
 				this.yHeight = 0;
 				this.xWidth = -this._sizeCell;
 			} else if(	e.code === 'KeyD' && this.xWidth == 0 ||
 						e.code == 'ArrowRight' && this.xWidth == 0) {
-							// console.log(4);
-							// console.log(this.tail);
 				this.yHeight = 0;
 				this.xWidth = +this._sizeCell;
 			}

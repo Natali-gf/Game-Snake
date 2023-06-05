@@ -2,12 +2,6 @@ import Apple from "./apple.js";
 import Score from "./score.js";
 import Snake from "./snake.js";
 import GameCycle from "./gameCycle.js";
-import Speed from "./speed.js";
-
-//! Подскажите best practice инициализации обьекта:
-//! в конструкторе или до написания класа (как speed)?
-
-const speed = new Speed()
 
 export default class Game {
 	constructor(canvas, currentScore, bestResult, startField, buttonRestart, speedConstant){
@@ -53,7 +47,7 @@ export default class Game {
 		this.apple.newApple()
 		this.draw()
 		this.score.resetScore()
-		speed.speed = 500;
+		this.gameCycle.initialSpeed()
 		})
 	}
 

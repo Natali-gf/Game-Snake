@@ -11,7 +11,6 @@ const speedSettings = document.querySelector('.settings__speed')
 const speedMenu = document.querySelector('.speed__choice')
 const speedConstant = document.getElementById('speedConstant');
 const restartWithSettings = document.querySelector('.speed__button')
-// const speedUp = document.getElementById('speedUp');
 const canvasWidth = 500;
 const canvasHeight = 500;
 
