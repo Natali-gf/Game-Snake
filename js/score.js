@@ -18,7 +18,6 @@ export default class Score {
 		this.bestResult.append(this._bestScore);
 	}
 
-
 	#checkLocalStorage(){
 		if(this._localBestScore){
 			this._bestScore = this._localBestScore

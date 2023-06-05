@@ -18,7 +18,7 @@ export default class Apple extends Unicellular {
 		this.xCoordinate = getRandomNumber(0, 10) * this._sizeCell
 		this.yCoordinate = getRandomNumber(0, 10) * this._sizeCell
 
-		for (let i = this.snakeTail.length - 1; i > 0; i--){
+		for (let i = this.snakeTail.length - 1; i >= 0; i--){
 			if (this.snakeTail[i].xCoordinate === this.xCoordinate &&
 				this.snakeTail[i].yCoordinate === this.yCoordinate){
 					this.xCoordinate = getRandomNumber(0, 10) * this._sizeCell;
